@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://b252alw6bvt67"]
+
+[ext_resource type="ArrayMesh" uid="uid://dsxyid6esf7o0" path="res://models/basic car.obj" id="1_4kpx7"]
+[ext_resource type="Script" path="res://scripts/DriveComponent.cs" id="2_jkwo3"]
+[ext_resource type="ArrayMesh" uid="uid://cp0uajf00n163" path="res://models/basic wheel.obj" id="2_u57jn"]
+[ext_resource type="Script" path="res://scripts/Wheel.cs" id="4_wtkhy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8vk8e"]
+size = Vector3(10.4728, 8.16138, 32.6559)
+
+[node name="car" type="RigidBody3D"]
+
+[node name="frame" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73642, -4.10925, -1.31486)
+shape = SubResource("BoxShape3D_8vk8e")
+metadata/_edit_lock_ = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73642, 4.10925, 0.0949783)
+mesh = ExtResource("1_4kpx7")
+
+[node name="DriveComponent" type="Node" parent="."]
+script = ExtResource("2_jkwo3")
+
+[node name="Wheel1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 12.909, -11.2057, -10.128)
+mesh = ExtResource("2_u57jn")
+skeleton = NodePath("../Wheel2")
+script = ExtResource("4_wtkhy")
+
+[node name="2" type="Node3D" parent="Wheel1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23844, 0)
+
+[node name="1" type="Node3D" parent="Wheel1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31772, 0.120549, 3.8147e-06)
+
+[node name="3" type="Node3D" parent="Wheel1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45513, 0)
+
+[node name="4" type="Node3D" parent="Wheel1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35759, 0.241099, 8.58307e-06)
+
+[node name="5" type="Node3D" parent="Wheel1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, 1.76799, 8.58307e-06)
+
+[node name="6" type="Node3D" parent="Wheel1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, 1.76799, 9.53674e-06)
+
+[node name="7" type="Node3D" parent="Wheel1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-06)
+
+[node name="8" type="Node3D" parent="Wheel1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
+
+[node name="Wheel2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 13.07, -11.2057, 12.818)
+mesh = ExtResource("2_u57jn")
+skeleton = NodePath("../Wheel3")
+script = ExtResource("4_wtkhy")
+
+[node name="2" type="Node3D" parent="Wheel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23844, 0)
+
+[node name="1" type="Node3D" parent="Wheel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31772, 0.120549, 3.8147e-06)
+
+[node name="3" type="Node3D" parent="Wheel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45513, 0)
+
+[node name="4" type="Node3D" parent="Wheel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35759, 0.241099, 8.58307e-06)
+
+[node name="5" type="Node3D" parent="Wheel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, 1.76799, 8.58307e-06)
+
+[node name="6" type="Node3D" parent="Wheel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, 1.76799, 9.53674e-06)
+
+[node name="7" type="Node3D" parent="Wheel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-06)
+
+[node name="8" type="Node3D" parent="Wheel2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
+
+[node name="Wheel3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -12.725, -11.2057, -10.94)
+mesh = ExtResource("2_u57jn")
+skeleton = NodePath("../Wheel4")
+script = ExtResource("4_wtkhy")
+
+[node name="2" type="Node3D" parent="Wheel3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23844, 0)
+
+[node name="1" type="Node3D" parent="Wheel3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31772, 0.120549, 3.8147e-06)
+
+[node name="3" type="Node3D" parent="Wheel3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45513, 0)
+
+[node name="4" type="Node3D" parent="Wheel3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35759, 0.241099, 8.58307e-06)
+
+[node name="5" type="Node3D" parent="Wheel3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, 1.76799, 8.58307e-06)
+
+[node name="6" type="Node3D" parent="Wheel3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, 1.76799, 9.53674e-06)
+
+[node name="7" type="Node3D" parent="Wheel3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-06)
+
+[node name="8" type="Node3D" parent="Wheel3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
+
+[node name="Wheel4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0812053, 0, 1.99835, 0, 2, 0, -1.99835, 0, -0.0812053, -12.716, -11.2057, 11.733)
+mesh = ExtResource("2_u57jn")
+script = ExtResource("4_wtkhy")
+
+[node name="2" type="Node3D" parent="Wheel4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0173903, -2.68304, -0.110715)
+
+[node name="1" type="Node3D" parent="Wheel4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30033, -0.324047, -0.110712)
+
+[node name="3" type="Node3D" parent="Wheel4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0173903, 2.01053, -0.110715)
+
+[node name="4" type="Node3D" parent="Wheel4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37498, -0.203498, -0.110707)
+
+[node name="5" type="Node3D" parent="Wheel4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64176, 1.3234, -0.110706)
+
+[node name="6" type="Node3D" parent="Wheel4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58786, 1.3234, -0.110706)
+
+[node name="7" type="Node3D" parent="Wheel4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64176, -1.92819, -0.110706)
+
+[node name="8" type="Node3D" parent="Wheel4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58786, -1.97811, -0.110705)
