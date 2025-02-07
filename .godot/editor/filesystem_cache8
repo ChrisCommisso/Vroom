@@ -1,0 +1,18 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1738901416
+car.tscn::PackedScene::4345090766499694882::1738800864::0::1::::<><>::uid://dsxyid6esf7o0::::res://models/basic car.obj<>res://scripts/DriveComponent.cs<>uid://cp0uajf00n163::::res://models/basic wheel.obj<>res://scripts/Wheel.cs
+Click To Draw Path.gd::GDScript::-1::1738454641::0::1::::<>Node<>::
+Demo.tscn::PackedScene::3826862763331532900::1738800864::0::1::::<><>::uid://by0al5irc1r60::::res://Materials/Floor.tres<>res://Click To Draw Path.gd<>uid://bq5ujksxl5avb::::res://Materials/Shapes.tres
+Draw3D.cs::CSharpScript::-1::1738562140::0::1::::<><>::
+Draw3Dgd.gd::GDScript::-1::1738454707::0::1::::<>Node<>::
+icon.svg::CompressedTexture2D::8588874893479521425::1738268294::1738423769::1::::<><>::
+test.tscn::PackedScene::1690820290164278803::1738800864::0::1::::<><>::uid://dsxyid6esf7o0::::res://models/basic car.obj<>res://scripts/DriveComponent.cs<>uid://cp0uajf00n163::::res://models/basic wheel.obj<>res://scripts/Wheel.cs
+::res://Materials/::1738452469
+Floor.tres::StandardMaterial3D::4122583607425383691::1738452469::0::1::::<><>::
+Shapes.tres::StandardMaterial3D::3572604480624761035::1738452469::0::1::::<><>::
+::res://models/::1738423769
+basic car.obj::Mesh::8471613624749912317::1738275558::1738423769::1::::<><>::
+basic wheel.obj::Mesh::5878498287267521018::1738276591::1738423769::1::::<><>::
+::res://scripts/::1738282253
+DriveComponent.cs::CSharpScript::-1::1738800715::0::1::::<>Node<>::
+Wheel.cs::CSharpScript::-1::1738901396::0::1::::<>MeshInstance3D<>::

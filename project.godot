@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="New Game Project"
 
+[physics]
+
+3d/default_gravity=9.8
+
 [rendering]
 
 renderer/rendering_method="mobile"
