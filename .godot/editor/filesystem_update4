@@ -1,5 +1,6 @@
 res://test.tscn
 res://car.tscn
 res://Demo.tscn
+res://car_2.tscn
 res://scripts/DriveComponent.cs
 res://scripts/Wheel.cs

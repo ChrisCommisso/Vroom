@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "oxBQb8t/ME4=",
+  "dgSpecHash": "HuR0gBuBCGTF4mSk1pq9OgT0cB6yi8ibQIINIthMVoNFaB3sur14D4OFSD4rD3XvQOYOMl2HY5iDEvPEdbe2tg==",
   "success": true,
   "projectFilePath": "/home/silktail/Applications/Vroom/New Game Project.csproj",
   "expectedPackageFiles": [
     "/home/silktail/.nuget/packages/godot.sourcegenerators/4.3.0/godot.sourcegenerators.4.3.0.nupkg.sha512",
     "/home/silktail/.nuget/packages/godotsharp/4.3.0/godotsharp.4.3.0.nupkg.sha512",
-    "/home/silktail/.nuget/packages/godotsharpeditor/4.3.0/godotsharpeditor.4.3.0.nupkg.sha512"
+    "/home/silktail/.nuget/packages/godotsharpeditor/4.3.0/godotsharpeditor.4.3.0.nupkg.sha512",
+    "/home/silktail/.nuget/packages/microsoft.netcore.app.ref/6.0.36/microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "/home/silktail/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.36/microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System;
 using System.Linq;
 //TODO implement typed GetChildren!!!!!!!!!
 public partial class Wheel : MeshInstance3D
@@ -7,12 +8,12 @@ public partial class Wheel : MeshInstance3D
 	public MeshInstance3D f;
 	public MeshInstance3D t;
 	public PhysicsDirectSpaceState3D space;
-	//curremnt rotation speed
-	
-	public float floatiness=.4f;
+	//current rotation speed
+	private float wheelRad = 0;
+	public float floatiness=.8f;
 	public float rotationSpeed;
 	public float fall_coefficient=2f;
-	public float suspension_coefficient=1f;
+	public float suspension_coefficient=20000f;
 	[Export]
 	public float mass;
 	public Vector3 LastDownPoint{ get; set;}
@@ -21,6 +22,7 @@ public partial class Wheel : MeshInstance3D
     public override void _Ready()
     {
         base._Ready();
+		wheelRad = (((Node3D)this.GetChild(0)).GlobalPosition-this.GlobalPosition).Length();
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -35,69 +37,75 @@ public partial class Wheel : MeshInstance3D
 	}
 	public Vector3 SuspensionForce(Vector3 intend,DriveComponent driveComponent){
 		var parent = driveComponent.car;
-		Vector3 intended = parent.GlobalBasis.Z * intend.Z + parent.GlobalBasis.X * intend.X + parent.GlobalBasis.Y * intend.Y + parent.GlobalPosition;
-		var wtc = driveComponent.car.GlobalPosition-intended;
+		Vector3 intended = parent.GlobalBasis.Z * intend.Z + parent.GlobalBasis.X * intend.X + 
+		parent.GlobalBasis.Y * intend.Y + parent.GlobalPosition;
+		//var wtc = driveComponent.car.GlobalPosition-intended;
 
 		var up = parent.GlobalBasis.Y.Normalized();
 		var force = Vector3.Zero;
-		var wheelLen = (((Node3D)this.GetChild(0)).GlobalPosition-this.GlobalPosition).Length();
-		var offset = wheelLen*-up;
+		var offset = wheelRad*-up;
 
-        var groundQuery = PhysicsRayQueryParameters3D.Create(intended + up*wheelLen, intended+offset,exclude: new Array<Rid>(new Rid[1] {driveComponent.car.GetRid()}) );
+        var groundQuery = PhysicsRayQueryParameters3D.Create(intended + up*wheelRad, intended+offset,
+		exclude: new Array<Rid>(new Rid[1] {driveComponent.car.GetRid()}) );
     	var groundResult = DriveComponent.globalState.IntersectRay(groundQuery);
-		if(f == null)
-		 f = Draw3D.Point(intended+up*20,1,Colors.Red);
-		else
-		 f.GlobalPosition = intended+up*20;
-		if(t == null)
-		 t = Draw3D.Point(intended + offset,1,Colors.Beige);
-		else
-		 t.GlobalPosition = intended + offset;
+		
 		if(groundResult.Count>0){
-			force = suspension_coefficient*((((Vector3)groundResult["position"]-(intended+offset)).Length()*wtc)*floatiness+(1-floatiness)*((Vector3)groundResult["position"]-(intended+offset)));
+			
+			force = suspension_coefficient*((Vector3)groundResult["position"]-(intended+offset));//suspension_coefficient*((((Vector3)groundResult["position"]-(intended+offset)).Length()*wtc)*floatiness+(1-floatiness)*suspension_coefficient*new Vector3(1,1,1)*((Vector3)groundResult["normal"]).Normalized()*((Vector3)groundResult["position"]-(intended+offset)).Length()*((Vector3)groundResult["position"]-(intended+offset)).LengthSquared());
+			GD.Print(Name+" "+((intended + up*wheelRad)-((Vector3)groundResult["position"])).Length());
+			//force = suspension_coefficient*(GlobalPosition-intended)*(GlobalPosition-intended).LengthSquared();
+			force *= new Vector3(1,1, 1);
+
+			LastDownPoint = (Vector3)groundResult["position"];
+			GlobalPosition = (Vector3)groundResult["position"]-offset;
 		}
 		else{
-			driveComponent.car.AngularVelocity = Vector3.Zero;
+			
+			//      force = suspension_coefficient*(-1*up);//*(intended-GlobalPosition).LengthSquared();
+			//force *= new Vector3(1,1,1);
+			LastDownPoint=intended;
+			GlobalPosition=intended;
 		}
 			//force = ((Vector3)groundResult["position"]-(intended+offset)).Length()*suspension_coefficient*((((Vector3)groundResult["position"]-(intended+offset)).Length()*wtc)*floatiness+(1-floatiness)*((Vector3)groundResult["position"]-(intended+offset)));
+		if(f == null)
+		 		f = Draw3D.Point(intended+up*20,4,Colors.Red);
+			else
+		 		f.GlobalPosition = intended-offset;
+			if(t == null)
+		 		t = Draw3D.Point(intended + offset,5,Colors.Beige);
+			else
+		 		t.GlobalPosition = intended-offset + force/1000;
 		
-		if(groundResult.Count>0)
-		{
-			GlobalPosition=(Vector3)groundResult["position"]-offset;
-		}
-		else
-		{
-			GlobalPosition=driveComponent.IntendedWheelPositions[this];
-		}
+		
 		//apply the forces to the car
-		GD.Print(Name,force);
+
 		return force;
+		
 	}
 
-	public Vector3 ForwardForce(DriveComponent driveComponent){
-		var rotationalQuery = PhysicsRayQueryParameters3D.Create(GlobalPosition,GlobalPosition+2*(LastUsed.GlobalPosition-GlobalPosition));
-    	var rotationalResult = DriveComponent.globalState.IntersectRay(rotationalQuery);
-		var down = Vector3.Down*driveComponent.car.Basis;
-		down*=4.4f;
-		var groundQuery = PhysicsRayQueryParameters3D.Create(GlobalPosition,GlobalPosition+down);
+	public Vector3 ForwardForce(DriveComponent driveComponent,float wheelRpm,double delta){
+		
+		var parent = driveComponent.car;
+		var up = parent.GlobalBasis.Y.Normalized();
+		var force = Vector3.Zero;
+		var offset = wheelRad*-up;
+		var intend = driveComponent.IntendedWheelPositions[this];
+		Vector3 intended = parent.GlobalBasis.Z * intend.Z + parent.GlobalBasis.X * intend.X + parent.GlobalBasis.Y * intend.Y + parent.GlobalPosition;
+       
+       
+		var groundQuery = PhysicsRayQueryParameters3D.Create(intended + up*wheelRad, intended+offset,exclude: new Array<Rid>(new Rid[1] {driveComponent.car.GetRid()}) );
     	var groundResult = DriveComponent.globalState.IntersectRay(groundQuery);
-		if(rotationalResult.Count>0)
-		{
-			var position = (Vector3)rotationalResult["position"];
-			if(groundResult.Count>0)
-			{
-				LastUsed = MostDown(driveComponent);
-				rotationalQuery = PhysicsRayQueryParameters3D.Create(GlobalPosition,GlobalPosition+2*(LastUsed.GlobalPosition-GlobalPosition));
-    			rotationalResult = DriveComponent.globalState.IntersectRay(rotationalQuery);
-				LastGripPoint = (Vector3)rotationalResult["position"];
-				
-				return (LastGripPoint-position)-driveComponent.car.LinearVelocity;
+		if(groundResult.Count>0){
+			var direction = ((Vector3)groundResult["normal"]).Cross(GlobalBasis.Z).Normalized();
+			if(direction.Dot(driveComponent.car.GlobalBasis.Z.Normalized())<0){
+				direction*=-1;
 			}
+			force = 5*direction*wheelRpm*60*2*Mathf.Pi*(float)delta;
+			
 		}
-		LastUsed = MostDown(driveComponent);
-		rotationalQuery = PhysicsRayQueryParameters3D.Create(GlobalPosition,GlobalPosition+2*(LastUsed.GlobalPosition-GlobalPosition));
-    	rotationalResult = DriveComponent.globalState.IntersectRay(rotationalQuery);
-		LastGripPoint = (Vector3)rotationalResult["position"];
-		return Vector3.Zero;
+		//driveComponent.car.AngularVelocity += driveComponent.car.Basis.Y.Normalized()*(driveComponent.car.Basis.X.Normalized().Dot((force)/(driveComponent.car.LinearVelocity.Length())))/(2*MathF.PI);//car.AngularVelocity.Rotated(car.GlobalBasis.Y.Normalized(),(car.Basis.X.Normalized().Dot(lookTo.Normalized())*car.LinearVelocity.Length()*.01f)/(2*MathF.PI));
+
+		
+		return force;
 	}
 }

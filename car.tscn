@@ -17,7 +17,7 @@ albedo_color = Color(1, 0.176471, 1, 1)
 [node name="car" type="RigidBody3D"]
 
 [node name="frame" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73642, -4.10925, -1.31486)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73642, -4.10925, 0.0123857)
 shape = SubResource("BoxShape3D_8vk8e")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="frame"]
@@ -29,7 +29,7 @@ material = SubResource("StandardMaterial3D_8vqpj")
 script = ExtResource("2_jkwo3")
 
 [node name="Wheel1" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 8.55277, -11.2057, -10.128)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 13.1892, -11.2057, -11.1533)
 mesh = ExtResource("2_u57jn")
 skeleton = NodePath("../Wheel2")
 surface_material_override/0 = SubResource("StandardMaterial3D_hkoql")
@@ -60,7 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
 
 [node name="Wheel2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 8.71377, -11.2057, 12.818)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 13.3502, -11.2057, 11.7927)
 mesh = ExtResource("2_u57jn")
 skeleton = NodePath("../Wheel3")
 surface_material_override/0 = SubResource("StandardMaterial3D_hkoql")
@@ -91,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
 
 [node name="Wheel3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -17.0812, -11.2057, -10.94)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -12.4448, -11.2057, -11.9653)
 mesh = ExtResource("2_u57jn")
 skeleton = NodePath("../Wheel4")
 surface_material_override/0 = SubResource("StandardMaterial3D_hkoql")
@@ -122,7 +122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
 
 [node name="Wheel4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0812053, 0, 1.99835, 0, 2, 0, -1.99835, 0, -0.0812053, -17.0722, -11.2057, 11.733)
+transform = Transform3D(-0.0812053, 0, 1.99835, 0, 2, 0, -1.99835, 0, -0.0812053, -12.4358, -11.2057, 10.7077)
 mesh = ExtResource("2_u57jn")
 surface_material_override/0 = SubResource("StandardMaterial3D_hkoql")
 script = ExtResource("4_wtkhy")
@@ -149,127 +149,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58786, 1.3234, -0.110706)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64176, -1.92819, -0.110706)
 
 [node name="8" type="Node3D" parent="Wheel4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58786, -1.97811, -0.110705)
-
-[node name="Wheel5" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 17.3736, -11.2057, -10.128)
-mesh = ExtResource("2_u57jn")
-skeleton = NodePath("../Wheel2")
-surface_material_override/0 = SubResource("StandardMaterial3D_hkoql")
-script = ExtResource("4_wtkhy")
-
-[node name="2" type="Node3D" parent="Wheel5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23844, 0)
-
-[node name="1" type="Node3D" parent="Wheel5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31772, 0.120549, 3.8147e-06)
-
-[node name="3" type="Node3D" parent="Wheel5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45513, 0)
-
-[node name="4" type="Node3D" parent="Wheel5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35759, 0.241099, 8.58307e-06)
-
-[node name="5" type="Node3D" parent="Wheel5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, 1.76799, 8.58307e-06)
-
-[node name="6" type="Node3D" parent="Wheel5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, 1.76799, 9.53674e-06)
-
-[node name="7" type="Node3D" parent="Wheel5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-06)
-
-[node name="8" type="Node3D" parent="Wheel5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
-
-[node name="Wheel6" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 17.5346, -11.2057, 12.818)
-mesh = ExtResource("2_u57jn")
-skeleton = NodePath("../Wheel3")
-surface_material_override/0 = SubResource("StandardMaterial3D_hkoql")
-script = ExtResource("4_wtkhy")
-
-[node name="2" type="Node3D" parent="Wheel6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23844, 0)
-
-[node name="1" type="Node3D" parent="Wheel6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31772, 0.120549, 3.8147e-06)
-
-[node name="3" type="Node3D" parent="Wheel6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45513, 0)
-
-[node name="4" type="Node3D" parent="Wheel6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35759, 0.241099, 8.58307e-06)
-
-[node name="5" type="Node3D" parent="Wheel6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, 1.76799, 8.58307e-06)
-
-[node name="6" type="Node3D" parent="Wheel6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, 1.76799, 9.53674e-06)
-
-[node name="7" type="Node3D" parent="Wheel6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-06)
-
-[node name="8" type="Node3D" parent="Wheel6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
-
-[node name="Wheel7" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -8.26044, -11.2057, -10.94)
-mesh = ExtResource("2_u57jn")
-skeleton = NodePath("../Wheel4")
-surface_material_override/0 = SubResource("StandardMaterial3D_hkoql")
-script = ExtResource("4_wtkhy")
-
-[node name="2" type="Node3D" parent="Wheel7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.23844, 0)
-
-[node name="1" type="Node3D" parent="Wheel7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31772, 0.120549, 3.8147e-06)
-
-[node name="3" type="Node3D" parent="Wheel7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45513, 0)
-
-[node name="4" type="Node3D" parent="Wheel7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35759, 0.241099, 8.58307e-06)
-
-[node name="5" type="Node3D" parent="Wheel7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, 1.76799, 8.58307e-06)
-
-[node name="6" type="Node3D" parent="Wheel7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, 1.76799, 9.53674e-06)
-
-[node name="7" type="Node3D" parent="Wheel7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62437, -1.48359, 8.58307e-06)
-
-[node name="8" type="Node3D" parent="Wheel7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60525, -1.53351, 1.04904e-05)
-
-[node name="Wheel8" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0812053, 0, 1.99835, 0, 2, 0, -1.99835, 0, -0.0812053, -8.25144, -11.2057, 11.733)
-mesh = ExtResource("2_u57jn")
-surface_material_override/0 = SubResource("StandardMaterial3D_hkoql")
-script = ExtResource("4_wtkhy")
-
-[node name="2" type="Node3D" parent="Wheel8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0173903, -2.68304, -0.110715)
-
-[node name="1" type="Node3D" parent="Wheel8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30033, -0.324047, -0.110712)
-
-[node name="3" type="Node3D" parent="Wheel8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0173903, 2.01053, -0.110715)
-
-[node name="4" type="Node3D" parent="Wheel8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37498, -0.203498, -0.110707)
-
-[node name="5" type="Node3D" parent="Wheel8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64176, 1.3234, -0.110706)
-
-[node name="6" type="Node3D" parent="Wheel8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58786, 1.3234, -0.110706)
-
-[node name="7" type="Node3D" parent="Wheel8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64176, -1.92819, -0.110706)
-
-[node name="8" type="Node3D" parent="Wheel8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58786, -1.97811, -0.110705)

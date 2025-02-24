@@ -10,9 +10,9 @@
 /home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/New Game Project.AssemblyInfo.cs
 /home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/New Game Project.csproj.CoreCompileInputs.cache
 /home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/New Game Project.sourcelink.json
-/home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/New Game.D781FC22.Up2Date
 /home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/New Game Project.dll
 /home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/refint/New Game Project.dll
 /home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/New Game Project.pdb
 /home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/New Game Project.genruntimeconfig.cache
 /home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/ref/New Game Project.dll
+/home/silktail/Applications/Vroom/.godot/mono/temp/obj/Debug/New Game Project.csproj.CopyComplete

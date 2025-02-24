@@ -1,4 +1,4 @@
-StaticBody3D
-CollisionShape3D
 Camera3D
+CollisionShape3D
+StaticBody3D
 CSGBox3D
